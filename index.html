@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Loja Eletrônicos — Página de Vendas</title>
+  <style>
+    :root{--accent:#0b7cff;--bg:#f7f7f9;--card:#ffffff;--muted:#666}
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;margin:0;background:var(--bg);color:#111}
+    header{background:linear-gradient(90deg,var(--accent),#4aa3ff);color:#fff;padding:20px}
+    .container{max-width:1100px;margin:24px auto;padding:0 18px}
+    h1{margin:0;font-size:1.6rem}
+    nav{display:flex;gap:12px;margin-top:12px}
+    .tab{background:rgba(255,255,255,0.12);padding:8px 12px;border-radius:8px;cursor:pointer}
+    .tab.active{background:#fff;color:#111;font-weight:600}
+    main{margin-top:18px}
+    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 18px rgba(20,20,40,0.06)}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .gallery{display:flex;gap:8px;flex-wrap:wrap}
+    .gallery img{width:calc((100% - 16px)/3);height:160px;object-fit:cover;border-radius:8px}
+    .video-wrap{position:relative;padding-top:56.25%;border-radius:8px;overflow:hidden}
+    .video-wrap iframe{position:absolute;left:0;top:0;width:100%;height:100%;border:0}
+    .contact-list{display:flex;flex-direction:column;gap:8px}
+    .contact-list a{color:var(--accent);text-decoration:none}
+    footer{margin:28px 0;text-align:center;color:var(--muted);font-size:0.9rem}
+    /* responsive */
+    @media (max-width:900px){.grid{grid-template-columns:1fr} .gallery img{width:32%}}
+    @media (max-width:560px){.gallery img{width:49%}}
+    /* simple form styles */
+    form input, form textarea{width:100%;padding:10px;margin-top:6px;border:1px solid #e6e6e9;border-radius:8px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:var(--accent);color:#fff;text-decoration:none;border:none;cursor:pointer}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Loja Eletrônicos — Promoções e Lançamentos</h1>
+      <nav role="tablist" aria-label="Seções">
+        <button class="tab active" data-target="home" role="tab" aria-selected="true">Home</button>
+        <button class="tab" data-target="contato" role="tab" aria-selected="false">Contato</button>
+        <button class="tab" data-target="form" role="tab" aria-selected="false">Formulário</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="home" class="card" role="tabpanel">
+      <div class="grid">
+        <div>
+          <h2>Descrição</h2>
+          <p style="color:var(--muted);line-height:1.5">Bem-vindo à nossa loja de eletrônicos! Aqui você encontra os melhores produtos com garantia e suporte local: celulares, fones, acessórios, smartwatches e muito mais. Trabalhamos com marcas reconhecidas e oferecemos parcelamento, entrega e assistência técnica autorizada. Aproveite as promoções e confira os lançamentos.</p>
+
+          <h3 style="margin-top:12px">Galeria</h3>
+          <div class="gallery" aria-hidden="false">
+            <img src="https://picsum.photos/id/1015/800/600" alt="Smartphone em oferta">
+            <img src="https://picsum.photos/id/1060/800/600" alt="Fones de ouvido modernos">
+            <img src="https://picsum.photos/id/180/800/600" alt="Acessórios e gadgets">
+          </div>
+
+          <h3 style="margin-top:14px">Vídeo demonstrativo</h3>
+          <div class="video-wrap" aria-hidden="false">
+            <!-- Exemplo: substitua o src pelo link do YouTube do seu produto -->
+            <iframe src="https://www.youtube.com/embed/Ee7jexP24eQHK" title="Vídeo demonstrativo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+
+        <aside>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div class="card" style="padding:12px">
+              <h4>Oferta do dia</h4>
+              <p style="margin:6px 0;color:var(--muted)">Smartphone XYZ — 10x sem juros ou 15% de desconto à vista.</p>
+              <a href="#contato" class="btn" onclick="switchTab('contato')">Quero comprar</a>
+            </div>
+
+            <div class="card" style="padding:12px">
+              <h4>Horário e Endereço</h4>
+              <p style="margin:6px 0;color:var(--muted)">Seg-Sex: 09:00 - 18:00<br>Av. Exemplo, 123 — Centro</p>
+              <a href="tel:+554199999999" class="contact-link">Ligar: +55 (41) 99999-9999</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="card" role="tabpanel" hidden>
+      <h2>Contato</h2>
+      <div class="grid" style="grid-template-columns:1fr 360px;">
+        <div>
+          <p style="color:var(--muted)">Tem dúvidas ou quer fechar um pedido? Envie uma mensagem que responderemos em até 1 dia útil.</p>
+          <form id="contactForm" onsubmit="event.preventDefault();alert('Formulário de contato enviado (exemplo). Substitua pelo envio real no servidor).')">
+            <label>Nome</label>
+            <input type="text" required placeholder="Seu nome">
+
+            <label>Email</label>
+            <input type="email" required placeholder="seu@email.com">
+
+            <label>Mensagem</label>
+            <textarea rows="5" required placeholder="Escreva sua mensagem"></textarea>
+
+            <div style="margin-top:10px"><button class="btn" type="submit">Enviar</button></div>
+          </form>
+        </div>
+
+        <aside>
+          <div class="card" style="padding:12px">
+            <h4>Redes e telefone</h4>
+            <div class="contact-list">
+              <div><strong>Telefone:</strong> <a href="tel:+554199999999">+55 (41) 99999-9999</a></div>
+              <div><strong>Email:</strong> <a href="mailto:contato@lojaexemplo.com">contato@lojaexemplo.com</a></div>
+              <div><strong>Instagram:</strong> <a href="https://instagram.com" target="_blank" rel="noopener">@lojaexemplo</a></div>
+            </div>
+          </div>
+
+          <div class="card" style="padding:12px;margin-top:12px">
+            <h4>Mapa</h4>
+            <p style="color:var(--muted)">Insira o iframe do Google Maps com o endereço da sua loja aqui.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- FORMULÁRIO GOOGLE -->
+    <section id="form" class="card" role="tabpanel" hidden>
+      <h2>Formulário</h2>
+      <p style="color:var(--muted)">Abaixo está um espaço para incorporar o Formulário do Google. Substitua o atributo <code>src</code> pelo link de incorporação do seu formulário (menu -> Enviar -> Incorporar HTML no Google Forms).</p>
+
+      <div style="height:700px;border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(20,20,40,0.06)">
+        <!-- EXEMPLO de iframe: substitua o src pelo *embed* do seu formulário Google -->
+        <iframe src="https://forms.gle/AzzWa5JowbaCuBEW6" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0">Carregando…</iframe>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Loja Eletrônicos — Todos os direitos reservados
+    </footer>
+  </main>
+
+  <script>
+    // tabs
+    const tabs = document.querySelectorAll('.tab');
+    function switchTab(targetId){
+      tabs.forEach(t=>{
+        const is = t.dataset.target === targetId;
+        t.classList.toggle('active', is);
+        t.setAttribute('aria-selected', is ? 'true' : 'false');
+      });
+      document.querySelectorAll('main section[role="tabpanel"]').forEach(s=>{
+        s.hidden = s.id !== targetId;
+      });
+      // scroll to top of container
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    tabs.forEach(t=>t.addEventListener('click',()=>switchTab(t.dataset.target)));
+
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
